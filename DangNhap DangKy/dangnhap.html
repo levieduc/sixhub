@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập và Đăng ký</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../css/all.min.css">
+    <script src="../js/all.min.js"></script>
+    <link rel="stylesheet" href="dndk.css">
+</head>
+<body>
+    <div class="container mt-2">
+        <div><a href="../index/index.html"><img style="height:70px ;position: relative;" src="img/nhom6.png" alt=""> </a></div>
+            <div class="row justify-content-center mt-5">
+                <div class="col-md-5 the">
+                    <div class="card text-black ">
+                        <div class="card-body">
+                            <br><br>
+                            <div>
+                                <h1>Đăng nhập</h1>
+                            </div>
+                                    <form class="mt-5 " id="registrationForm">
+                                        <div class="form-group mb-3" >
+                                            <input type="email" name="" id="txtEmail" class="form-control"
+                                                placeholder="Email">
+                                            <span id="errEmail" class="err"></span>                                    </div>
+                                        
+                                        <div class="form-group mb-3">
+                                            <input type="password" name="" id="txtMK" class="form-control" placeholder="Mật Khẩu">
+                                            <span id="errMK" class="err"></span>
+                                        </div>
+                                        
+                                        <div class="nut1">
+                                            
+                                            <button class="b1"><i class="fa-brands fa-facebook fa-lg" style="color: #194de6;"></i></button>
+                                            <button class="b2"><i class="fa-brands fa-google fa-lg" style="color: #ea1026;"></i></button>
+                                            <button class="b3"><i class="fa-brands fa-apple fa-lg" style="color: #ffffff;"></i></button>
+                                            <button class="b4"><i class="fa-brands fa-xbox fa-lg" style="color: #000000;"></i></button>
+                                            
+                                        </div>
+                                        <div class="form-check checkk">
+                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                                            <label class="form-check-label" for="flexCheckChecked">
+                                            Lưu đăng nhập
+                                            </label>
+                                        </div>
+                                        <br><br>
+                                        <div class="nut">
+                                            <button class="b5" id="btnDangKy"><i class="fa-solid fa-arrow-right fa-2xl" style="color: gray;"></i>
+                                            </button>
+                                        </div>
+                                        <div class="noidung">
+                                            <a href="quenmk.html">Không thể đăng nhập?</a><br>
+                                            <a href="dangky.html">Tạo tào khoản</a>
+                                        </div>
+                                    
+                                    </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+    </div>
+    <script>
+        let i = 1;
+        function ktEmail() {
+        let email = $("#txtEmail").val().trim();
+        let regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (email.length === 0) {
+            $("#errEmail").html("Email không được để trống");
+            $("#txtEmail").focus();
+            return false;
+        } else if (regex.test(email)) {
+            $("#errEmail").html("(Chuẩn)");
+            return true;
+        } else {
+            $("#errEmail").html("Email không hợp lệ");
+            $("#txtEmail").focus();
+            return false;
+        }
+        }
+
+        $("#txtEmail").blur(function (e) {
+            ktEmail();
+        });
+
+        function ktMatKhau() {
+        let matkhau = $("#txtMK").val();
+        let regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+
+        if (matkhau == "") {
+            $("#errMK").html("Mật khẩu không được để trống");
+            return false;
+        } else if (regex.test(matkhau)) {
+            $("#errMK").html("(Chuẩn)");
+            return true;
+        } else {
+            $("#errMK").html("Mật khẩu phải có ít nhất 8 ký tự, bao gồm chữ cái viết hoa, chữ cái viết thường và số.");
+            return false;
+        }
+        }
+
+        $("#txtMK").blur(function (e) {
+            ktMatKhau();
+        });
+        $("#btnDangKy").click(function (e) {
+            e.preventDefault();
+            if (ktEmail() && ktMatKhau()) {
+                alert("Đăng nhập thành công!");
+                //Link tới trang chủ nè nè
+                window.location.href = "";
+            } else {
+                alert("Thông tin không hợp lệ. Vui lòng kiểm tra lại!");
+            }
+        });
+
+    </script>
+</body>
+</html>

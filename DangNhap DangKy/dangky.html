@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../css/all.min.css">
+    <script src="../js/all.min.js"></script>
+    <link rel="stylesheet" href="dndk.css">
+</head>
+<body>
+    <div class="container mt-2">
+        <div><a href="../index/index.html"><img style="height:70px ;position: relative;" src="img/nhom6.png" alt=""> </a></div>
+        <div class="row justify-content-center">
+            <div class="col-md-5 menu">
+                <div class="card">
+                    
+                    <div class="card-body">
+                        <br>
+                        <div>
+                            <h1>Đăng ký</h1>
+                        </div>
+                        <form id="registrationForm">
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Tên đăng nhập</label>
+                                <input type="text" name="txtDN" id="txtDN" class="form-control" placeholder="Tên đăng nhập">
+                                <span id="errDN" class="err"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" name="" id="txtEmail" class="form-control"
+                                            placeholder="Email">
+                                <span id="errEmail" class="err"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Mật khẩu</label>
+                                <input type="password" name="" id="txtMK" class="form-control" placeholder="Mật khẩu">
+                                <span id="errMK" class="err"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label for="confirm-password" class="form-label">Xác nhận mật khẩu</label>
+                                <input type="password" name="" id="txtXNMK" class="form-control" placeholder="Xác nhận lại mật khẩu">
+                                <span id="errXNMK" class="err"></span>
+                                
+                            </div>
+                            <div class="nut1">
+                                <b>Bạn có thể tạo tài khoản với</b> <br>
+                                <button class="b1"><i class="fa-brands fa-facebook fa-lg" style="color: #194de6;"></i></button>
+                                <button class="b2"><i class="fa-brands fa-google fa-lg" style="color: #ea1026;"></i></button>
+                                <button class="b3"><i class="fa-brands fa-apple fa-lg" style="color: #ffffff;"></i></button>
+                                <button class="b4"><i class="fa-brands fa-xbox fa-lg" style="color: #000000;"></i></button>
+                                
+                            </div>
+                            
+                            <br>
+                            <div class="nut">
+                                <button type="submit" class="b5" id="btnDangKy" ><i class="fa-solid fa-arrow-right fa-2xl" style="color: gray;"></i>
+                                </button>
+                            </div>
+                            <div class="noidung">
+                                <a href="dangnhap.html">Bạn đã có sẵn tài khoản?</a><br>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let i = 1;
+        function ktTenDangNhap() {
+        let tenDangNhap = $("#txtDN").val().trim();
+        let regex = /^[a-zA-Z0-9_]+$/;
+
+        if (tenDangNhap.length === 0) {
+            $("#errDN").html("Tên đăng nhập không được để trống");
+            $("#txtDN").focus();
+            return false;
+        } else if (regex.test(tenDangNhap)) {
+            $("#errDN").html("Chuẩn");
+            return true;
+        } else {
+            $("#errDN").html("Tên đăng nhập chỉ chấp nhận ký tự chữ, số và dấu gạch dưới.");
+            $("#txtDN").focus();
+            return false;
+        }
+        }
+
+        $("#txtDN").blur(function (e) {
+            ktTenDangNhap();
+        });
+
+        function ktEmail() {
+        let email = $("#txtEmail").val().trim();
+        let regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (email.length === 0) {
+            $("#errEmail").html("Email không được để trống");
+            $("#txtEmail").focus();
+            return false;
+        } else if (regex.test(email)) {
+            $("#errEmail").html("Chuẩn");
+            return true;
+        } else {
+            $("#errEmail").html("Email không hợp lệ");
+            $("#txtEmail").focus();
+            return false;
+        }
+        }
+
+        $("#txtEmail").blur(function (e) {
+            ktEmail();
+        });
+
+        function ktMatKhau() {
+        let matkhau = $("#txtMK").val();
+        let regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+
+        if (matkhau == "") {
+            $("#errMK").html("Mật khẩu không được để trống");
+            return false;
+        } else if (regex.test(matkhau)) {
+            $("#errMK").html("Chuẩn");
+            return true;
+        } else {
+            $("#errMK").html("Mật khẩu phải có ít nhất 8 ký tự, bao gồm chữ cái viết hoa, chữ cái viết thường và số.");
+            return false;
+        }
+        }
+
+        $("#txtMK").blur(function (e) {
+            ktMatKhau();
+        });
+
+        function ktXacNhanMatKhau() {
+        let matkhau = $("#txtMK").val();
+        let xacnhanmatkhau = $("#txtXNMK").val();
+
+        if (xacnhanmatkhau == "") {
+            $("#errXNMK").html("Xác nhận mật khẩu không được để trống");
+            return false;
+        } else if (xacnhanmatkhau === matkhau) {
+            $("#errXNMK").html("Chuẩn");
+            return true;
+        } else {
+            $("#errXNMK").html("Xác nhận mật khẩu không khớp");
+            return false;
+        }
+        }
+
+        $("#txtXNMK").blur(function (e) {
+            ktXacNhanMatKhau();
+        });
+        $("#btnDangKy").click(function (e) {
+        e.preventDefault();
+        
+        if (ktTenDangNhap() && ktEmail() && ktMatKhau() && ktXacNhanMatKhau()) {
+
+            alert("Đăng ký thành công!");
+            //Link tới trang đăng nhập nè nè
+            window.location.href = "../html/dangnhap.html";
+        } else {
+            alert("Thông tin không hợp lệ. Vui lòng kiểm tra lại!");
+        }
+        });
+
+    </script>
+</body>
+</html>

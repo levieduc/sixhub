@@ -1,0 +1,68 @@
+body{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-image: url(img/cam.jpg);
+}
+h1{
+    text-decoration:none ;
+    font-size:xx-large;
+    color: gray;
+    text-align: center;
+}
+.nut button{
+    border-radius: 30%;
+    border: 1px solid;
+    color: gray;
+    height: 80px;
+    width: 80px;
+}
+.nut1 button{
+    border-radius: 10px;
+    border: 1px solid;
+    color: gray;
+    height: 30px;
+    width: 80px;
+}
+a:hover{
+    text-decoration: none;
+    color: red;
+}
+a{
+    color: black;
+}
+.menu{ 
+    /* thedangky */
+    margin-left: 60%;
+    margin-top: 1%;
+}
+.nut{
+    text-align: center;
+}
+.nut1{
+    text-align: center;
+    
+}
+.noidung{
+    text-align: center;
+}
+.b1{
+    background-color: white;
+    
+}
+.b2{
+    background-color: blue;
+}
+.b3{
+    background-color: black;
+}
+.b4{
+    background-color: green;
+}
+.b5{
+    background-color: white;
+}
+.the{
+    margin-top: 5%;
+}

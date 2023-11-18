@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quên Mật Khẩu</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../css/all.min.css">
+    <script src="../js/all.min.js"></script>
+    <link rel="stylesheet" href="dndk.css">
+</head>
+<body>
+    <div class="container mt-2">
+        <div><a href="#"><img style="height:70px ;position: relative;" src="../img/nhom6.png" alt=""> </a></div>
+            <div class="row justify-content-center mt-5">
+                <div class="col-md-5 the">
+                    <div class="card text-black ">
+                        <div class="card-body">
+                            <br><br>
+                            <div>
+                                <h1>Quên mật khẩu</h1>
+                            </div>
+                                    <form class="mt-5 " id="registrationForm">
+                                        <div class="form-group mb-3" >
+                                            <input type="email" name="" id="txtEmail" class="form-control"
+                                                placeholder="Nhập Email của bạn">
+                                            <span id="errEmail" class="err"></span>                                    </div>
+                                        <br><br>
+                                        <div class="nut">
+                                            <button class="b5" id="btnDangKy"><i class="fa-solid fa-arrow-right fa-2xl" style="color: gray;"></i>
+                                            </button>
+                                        </div>
+                                        <div class="noidung">
+                                            <a href="dangnhap.html">Đăng nhập</a> <br>
+                                            <a href="dangky.html">Tạo tào khoản</a>
+                                        </div>
+                                    
+                                    </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+    </div>
+    <script>
+        let i = 1;
+        function ktEmail() {
+        let email = $("#txtEmail").val().trim();
+        let regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (email.length === 0) {
+            $("#errEmail").html("Email không được để trống");
+            $("#txtEmail").focus();
+            return false;
+        } else if (regex.test(email)) {
+            $("#errEmail").html("(Chuẩn)");
+            return true;
+        } else {
+            $("#errEmail").html("Email không hợp lệ");
+            $("#txtEmail").focus();
+            return false;
+        }
+        }
+
+        $("#txtEmail").blur(function (e) {
+            ktEmail();
+        });
+        $("#btnDangKy").click(function (e) {
+            e.preventDefault();
+            if (ktEmail()) {
+                alert("Mật Khẩu sẽ được gửi đến email trong vòng 30 phút!");
+                //Link tới trang đăng nhập nè nè
+                window.location.href = "../html/dangnhap.html";
+            } else {
+                alert("Thông tin không hợp lệ. Vui lòng kiểm tra lại!");
+            }
+        });
+
+    </script>
+</body>
+</html>
